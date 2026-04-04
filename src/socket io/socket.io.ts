@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Server, Socket } from 'socket.io';
 import { Server as HttpServer } from "http";
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 import config from '../app/config';
 let io: Server;
 
@@ -30,7 +30,9 @@ export const initSocket = (httpServer: HttpServer) => {
     });
 
     io.on("connection", (socket: Socket) => {
-        const tenantId = (socket as any).tenantId;
+        const token = socket.handshake.auth.token;
+        const decoded = jwt.verify(token, config.jwt_access_secret as string) as JwtPayload;
+        const tenantId = decoded.userId;
         socket.join(`tenant:${tenantId}`);
         console.log(`Client connected: ${tenantId}`);
         socket.on("disconnect", () => console.log(`Client disconnected: ${tenantId}`));

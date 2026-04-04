@@ -1,9 +1,9 @@
 import colors from 'colors';
 import { Server } from 'http';
 import mongoose from 'mongoose';
-import app from './app';
 import config from './app/config';
 import seedSuperUser from './app/DB';
+import { serverApp } from './app';
 let server: Server;
 
 async function main() {
@@ -13,7 +13,7 @@ async function main() {
     await mongoose.connect(config.database_url as string);
 
     seedSuperUser();
-    server = app.listen(
+    server = serverApp.listen(
       PORT, 
       // IPaddress, 
       () => {

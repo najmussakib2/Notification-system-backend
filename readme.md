@@ -112,8 +112,8 @@ Visit `http://localhost:5000/api/docs` for full interactive Swagger documentatio
 | GET | `/api/v1/analytics/trends` | 30-day trends |
 | GET | `/api/v1/analytics/channels` | Channel breakdown |
 
-## Project Structure
-
+### Project Structure
+```bash
 src/
 ├── app/
 |   ├── builder/        # Query Builder for Query manipulation
@@ -136,6 +136,7 @@ src/
 ├── socket io/          # Socket.io server
 ├── app.ts              # Entry point
 └── server.ts           # Database Connection point
+```
 
 > ⚠️ **Warning**
 > Dont Forget to add uploads folder in the root.

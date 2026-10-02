@@ -45,6 +45,7 @@
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
     "twilio": "^5.13.0",
+    "vercel": "^62.1.0",
     "zod": "^3.25.76"
   },
   "devDependencies": {
